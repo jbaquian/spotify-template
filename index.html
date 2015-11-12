@@ -18,28 +18,30 @@
 	
 </head>
 <body>
+	<h1>Which of an Artist's Albums are safe for my children?</h1>
 	<!-- Initiate app -->
 	<div ng-app="myApp" ng-controller="myCtrl">
 		<!-- Form -->
 		<form class="container" name="songForm">
 			<div class="form-group">
 				<label>Spotify search:</label>
-				<input name="search" placeholder="Enter your search.." ng-model="track" class="form-control"></input>
+				<input name="search" placeholder="Enter your search.." ng-model="artist" class="form-control"></input>
 			</div>
 			<div class="form-group">
-				<button ng-disabled="songForm.search.$invalid" class="btn btn-primary" ng-click="getSongs()" type="submit">Submit</button>
+				<button ng-disabled="songForm.search.$invalid" class="btn btn-primary" ng-click="getArtists()" type="submit">Submit</button>
 			</div>
 		</form>
 		
 		<!-- Results -->
 		<div class="container-fixed">
 			<div class="help-block">
-				<span ng-show="tracks.length>0">Click to sample</span>
-				<span ng-show="currentSong && !audioObject.paused">(playing)</span>
+				<span ng-show="artists.length>0"id="spanThing">Click the artist whose albums you want checked</span>
 			</div>
+			<div class ="container" id = "cont" ng-show="artists.length>0">
 			<ul>
-				<li ng-repeat="track in tracks" class="" ng-click="play(track.preview_url)" title="{{track.name}}">{{track.name + ', by ' + track.artists[0].name}}</li>
-			</ul>			
+				<li ng-repeat="artist1 in artists" class="" title="{{artist1.name}}" ng-click="check(artist1)">{{artist1.name}}</li>
+			</ul>
+			</div>		
 		</div>
 	</div>
 </body>
